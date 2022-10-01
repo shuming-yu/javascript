@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // JS array find 篩選
+    // 尋找當下吻合的第一筆資料
+
+    const arr = [1, 5, 10, 20, 30, 40];
+    const newArr = arr.find(function(item){
+        console.log(item);
+        return item >= 10;
+    })
+    console.log("newArr:",newArr);
+
+
+    let data = [
+        {
+            name: "Ben",
+            score: 87,
+        },
+        {
+            name: "Tiffany",
+            score: 62,
+        },
+        {
+            name: "Sharon",
+            score: 50,
+        },
+    ];
+    const filterScore = data.find(function(item){
+        console.log(item);
+        return item.score >= 60;
+    })
+    console.log("filterScore:", filterScore);
+</script>
+</html>

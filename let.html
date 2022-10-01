@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // let 宣告一個變數
+        let cookie = 20;
+        console.log(cookie);
+
+        // 變數重新賦予一個值
+        // 可以覆寫&修改既有 value 的值
+        cookie = 40;
+        console.log(cookie);
+
+
+        // const
+        let a = 1; 
+        const b = 2;
+
+        a = 4;
+        // b = 5;  // 無法修改 const 變數
+        console.log(a, b);
+
+        
+        // var 宣告一個可隨意更改其內容的變數
+        // let 宣告一個可隨意更改其內容的區塊區域變數
+        // const 宣告一個只可讀取的不可變常數
+        // https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Grammar_and_types
+
+        let a123 = 1;
+        // let 5abc = 2;   // 變數上開頭不能是數字
+
+
+        // 會區分大小寫
+        let abCd = 123;
+        let abcd = 321;
+        console.log(abCd, abcd);
+
+        // 支援特殊符號
+        let _a = 1;
+        let $qq = 2;
+        console.log(_a, $qq);
+
+        // JavaScript保留字
+        // http://www.w3bai.com/zh-TW/js/js_reserved.html#gsc.tab=0
+
+        let ben = {
+            a: 111,
+            b: 222,
+        };
+        console.log(typeof ben);
+
+        let myName = 'Ben';
+        let age = 27;
+        // let total = myName + age;
+        let total = myName * age;
+        // JavaScript 有些情況下會自動轉型
+        console.log(total,typeof total);
+        // NaN 數字範疇其中一種類, 屬於數字型別
+
+
+        // let age2 = "30";    // String
+        // let age2 = parseInt("30");  // number
+        let age2 = parseInt("Hello");   // NaN - 全域屬性 NaN 表示「非數值」（Not-A-Number）的數值。
+        console.log(age2,typeof age2);
+
+
+        // undefined 尚未被賦予值
+        let B;
+        console.log(B);
+
+        // null 有被賦予值, 是告知為空值
+        let QQ = 123;
+        QQ = null;  // 將資料清空, 記憶體釋放, 釋放記憶體空間
+        console.log(QQ);
+
+
+        let z = "1";
+        console.log(z+1);   // 11 - 字串加數字 會自動轉型為 字串
+        console.log(typeof z);
+        // 從表單文字取出來的數字都會是字串, 必須轉型為數字型別 parseInt
+
+        let y = 2;
+        y = y.toString();
+        console.log(typeof y);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // JS array filter 篩選
+    // 1. 篩選出符合條件的內容, 組合後回傳新陣列
+    // 2. 不會影響到原陣列
+
+    const arr = [1, 5, 10];
+    const newArr = arr.filter(function(item){
+        return item >= 5;
+    })
+    console.log(newArr);
+
+
+    let data = [
+        {
+            name: "Ben",
+            score: 87,
+        },
+        {
+            name: "Tiffany",
+            score: 62,
+        },
+        {
+            name: "Sharon",
+            score: 50,
+        },
+    ];
+    const filterScore = data.filter(function(item){
+        return item.score >= 60;
+    })
+    console.log(filterScore);
+</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="list">
+        <!-- <li>xxx充電站, 免費</li> -->
+    </ul>
+</body>
+<script>
+    let data = [
+        {
+            name: "Ben充電站",
+            Charge: "免費",
+        },
+        {
+            name: "Tommy充電站",
+            Charge: "免費",
+        },
+        {
+            name: "Tiffany充電站",
+            Charge: "投幣式",
+        },
+        {
+            name: "Ted充電站",
+            Charge: "免費",
+        },
+        {
+            name: "Sharon充電站",
+            Charge: "投幣式",
+        },
+    ];
+
+    let str = "";
+    let list = document.querySelector(".list");
+    // console.log(list);
+
+    data.forEach(function(item, index){
+        console.log(index, item);
+        str += `<li>${item.name},${item.Charge}</li>`;
+    })
+
+    list.innerHTML = str;
+
+    
+    // forEach 沒有回傳的特性 - return
+    let a = data.forEach(function(item){
+        return item;
+    })
+    console.log(a);
+</script>
+</html>

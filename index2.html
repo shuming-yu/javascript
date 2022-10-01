@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <!-- bootstrap4 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <!-- datatable.js -->
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <!-- jquery-ui -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <link href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" rel="stylesheet" />
+    <!-- moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
+    <style>
+        * {
+            font-size: 1rem;
+        }
+        
+        table.dataTable tbody tr.bg-popular {
+            background-color: #4db3;
+        }
+
+        table.dataTable tbody tr.bg-unpopular {
+            background-color: #d223;
+        }
+
+        .pre-line {
+            white-space: pre-line;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h1>DataTable使用範例</h1>
+        
+        <div class="d-flex flex-wrap">
+            <div class="col">
+                <label class="font-weight-bold">CDN 引入的 library: </label>
+                <label class="badge badge-secondary">jquery</label>
+                <label class="badge badge-secondary">jquery-ui</label>
+                <label class="badge badge-secondary">datatable.js</label>
+                <label class="badge badge-secondary">moment.js</label>
+                <label class="badge badge-secondary">bootstrap4</label>
+            </div>
+            <div class="col-12 mb-4">
+                <button id="btnInitialTable" class="btn btn-primary">初始化-initialTable()</button>
+                <button id="btnSetData" class="btn btn-primary">設定資料-setData()</button>
+                <button id="btnGetData" class="btn btn-primary">取得資料-getAllData()</button>
+
+                <button id="btnInitialTableWithCheckbox" class="btn btn-success">DataTable With Checkbox</button>
+                <button id="btnGetCheckedValue" class="btn btn-success">取得勾選的Value</button>
+                <button id="btnGetCheckedRowData" class="btn btn-success">取得勾選的Row Data</button>
+
+                <button id="btnCheckedJ" class="btn btn-warning">勾選語言"J"</button>
+                <button id="btnClearLog" class="btn btn-warning">清除歷程</button>
+            </div>
+        </div>
+
+        <div class="d-flex flex-wrap">
+            <div class="col-12">
+                <label class="font-weight-bold text-success">2021 Most popular technologies</h2>
+            </div>
+            <div class="col-6 border" style="min-height: 300px;">
+                <table id="mesTable"></table>
+            </div>
+            <div class="col-6">
+                <div id="execuationLog" class="d-flex flex-column border" style="min-height: 300px;"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    let mesTable;
+    //DataTable columns設定
+    let setting = {
+        columns: [
+            // //DataTable較新的版本
+            { title: "索引", data: "Index" },
+            { title: "語言", data: "Name" },
+            { title: "百分比", data: "Percentage" },
+            { title: "聲量", data: "Count" },
+
+            // //舊版DataTable
+            // { sTitle: "索引", mDataProp: "Index" },
+            // { sTitle: "語言", mDataProp: "Name" },
+            // { sTitle: "百分比", mDataProp: "Percentage" },
+            // { sTitle: "聲量", mDataProp: "Count" },
+        ],
+    };
+    //範例資料
+    let data = [
+        { Index: 0, Name: "JavaScript", Percentage: "64.96%", Count: "53,587" },
+        { Index: 1, Name: "HTML/CSS", Percentage: "56.07%", Count: "46,259" },
+        { Index: 2, Name: "Python", Percentage: "48.24%", Count: "39,792" },
+        { Index: 3, Name: "SQL", Percentage: "47.08%", Count: "38,835" },
+        { Index: 4, Name: "Java", Percentage: "35.35%", Count: "29,162" },
+        { Index: 5, Name: "Node.js", Percentage: "33.91%", Count: "27,975" },
+        { Index: 6, Name: "TypeScript", Percentage: "30.19%", Count: "24,909" },
+        { Index: 7, Name: "C#", Percentage: "27.86%", Count: "22,984" },
+        { Index: 8, Name: "Bash/Shell", Percentage: "27.13%", Count: "22,385" },
+        { Index: 9, Name: "C++", Percentage: "24.31%", Count: "20,057" },
+        { Index: 10, Name: "PHP", Percentage: "21.98%", Count: "18,130" },
+        { Index: 11, Name: "C", Percentage: "21.01%", Count: "17,329" },
+        { Index: 12, Name: "PowerShell", Percentage: "10.75%", Count: "8,871" },
+        { Index: 13, Name: "Go", Percentage: "9.55%", Count: "7,879" },
+        { Index: 14, Name: "Kotlin", Percentage: "8.32%", Count: "6,866" },
+        { Index: 15, Name: "Rust", Percentage: "7.03%", Count: "5,799" },
+        { Index: 16, Name: "Ruby", Percentage: "6.75%", Count: "5,569" },
+        { Index: 17, Name: "Dart", Percentage: "6.02%", Count: "4,965" },
+        { Index: 18, Name: "Assembly", Percentage: "5.61%", Count: "4,632" },
+        { Index: 19, Name: "Swift", Percentage: "5.1%", Count: "4,204" },
+        { Index: 20, Name: "R", Percentage: "5.07%", Count: "4,185" },
+    ];
+
+    $(document).ready(function() {
+        //event listener
+        $("#btnInitialTable").click(function () {
+            initialTable();
+        });
+        $("#btnSetData").click(setData);
+        $("#btnGetData").click(getAllData);
+
+        $("#btnInitialTableWithCheckbox").click(initialTableWithCheckbox);
+        $("#btnGetCheckedValue").click(getCheckedValue);
+        $("#btnGetCheckedRowData").click(getCheckedRowData);
+
+        $("#btnCheckedJ").click(setCheckedJ);
+        $("#btnClearLog").click(clearLog);
+    });
+
+    /**
+     * 初始化DataTable
+     * @param {object} [option] - 選填, DataTable 的 Option
+     */
+    function initialTable(option) {
+        // console.log(typeof option);
+        //設定預設 option
+        if (typeof(option) == "undefined") {
+            option = setting;
+            // console.log(typeof option);
+        }
+
+        //重覆initial會報錯
+        if (mesTable) {
+            //若遇到要重新初始化的實況，可以透過調用 DataTable 的 Api : destroy() 方法，移除已建立的實體
+            // destroy() : https://datatables.net/manual/tech-notes/3
+            mesTable.destroy();
+            //再將多餘的children清除
+            $("#mesTable").empty();
+        }
+
+        //將 DataTable 物件保存在全域變數 mesTable
+        //後續要對 DataTable 執行操作, 可透過調用 DataTable 的 Api
+        //https://datatables.net/reference/api/
+        mesTable = $("#mesTable").DataTable(option);
+        appendLog("initialTable()");
+    }
+
+    
+    /**
+     * 設定DataTable的資料
+     */
+    function setData() {
+        //檢查是否有初始化
+        if (!mesTable) {
+            initialTable();
+            // https://alvarotrigo.com/blog/disable-button-jquery/
+            $(this).prop('disabled', true);
+        }else{
+            $(this).prop('disabled', true);
+        }
+        //將資料新增至 Datatable 中, 最後調用 draw() 讓畫面 Render (對比js .innerHTML)
+        mesTable.rows.add(data).draw();
+        // mesTable.rows.add(data);
+        // console.log(data);
+        appendLog("setData()");
+    }
+
+    function getAllData() {
+        //檢查是否有初始化
+        if (!mesTable) {
+            initialTable();
+            // setData();
+        }
+        //mesTable.data()會取得目前Table內的所有資料
+        // data() : https://api.jquery.com/data/
+        // map() : https://api.jquery.com/jQuery.map/
+        let result = $.map(mesTable.data(), function(item) {
+            return item;
+        });
+        // JSON.stringify 把物件轉成字串
+        appendLog("getAllData(): \r\n" + JSON.stringify(result), "primary");
+    }
+    
+    /**
+     * 初始化DataTable，設定第一個欄位為Checkbox
+     * 針對[Percentage]欄位做特殊處理，標示"熱門"與"小眾"的語言
+     */
+    function initialTableWithCheckbox() {
+        let checkboxSetting = {
+            //js ES6 解構賦值
+            // https://es6.ruanyifeng.com/#docs/destructuring
+            // https://awdr74100.github.io/2019-10-24-javascript-deepcopy/
+            ...setting,
+            // columns: setting.columns,
+            //DataTable Option
+            //https://datatables.net/reference/option/
+            data: data,
+            info: false,    // 預設為true　是否要顯示"目前有 x  筆資料"
+            ordering: false,    // 預設為true 排序功能
+            paging: false,  // 預設為true 分頁功能
+            scrollY: 255,
+            // pageLength: 25,
+            // lengthMenu: [ 10, 25, 50, 75, 100 ],
+
+            //Callback for whenever a TR element is created for the table's body.
+            // https://datatables.net/reference/option/createdRow
+            createdRow: function(row, data, dataIndex, cells) {
+                let _tr = $(row);
+                // console.log(_tr, row);
+                //自定義Checkbox
+                let _checkbox = $("<input>").attr({
+                    type: "checkbox",
+                    value: data["Name"]
+                });
+                _tr.find("td:first").html(_checkbox);
+
+                //改變背景顏色: (1)百分比 >= 40%，(2)百分比 <= 5%
+                // https://www.fooish.com/javascript/string/replace.html
+                // console.log(typeof data.Percentage);
+                let percent = parseInt(data["Percentage"].replace("%"));
+                if (percent >= 40) {
+                    _tr.addClass("bg-popular");
+                }
+                else if (percent <= 5) {
+                    _tr.addClass("bg-unpopular");
+                }
+            },
+        };
+        // console.log(checkboxSetting);
+        initialTable(checkboxSetting);
+        appendLog("initialTableWithCheckbox()");
+    }
+    
+    /**
+     * 取得勾選的Value
+     */
+    function getCheckedValue() {
+        let _checedboxList = $("#mesTable").find("input[type=checkbox]:checked");
+        // console.log(_checedboxList);
+        let languages = $.map(_checedboxList, function(_checkbox) {
+            return $(_checkbox).val();
+        });
+        // console.log(languages);
+        appendLog("getCheckedValue(): " + JSON.stringify(languages));
+    }
+
+    /**
+     * 取得勾選的Row Data
+     */
+    function getCheckedRowData() {
+        let _checedboxList = $("#mesTable").find("input[type=checkbox]:checked");
+        console.log(_checedboxList);
+        let rows = $.map(_checedboxList, function(_checkbox) {
+            let _tr = $(_checkbox).parents("tr");
+            //透過dom <tr>, 來取得對應的Row Data
+            return mesTable.row(_tr).data();
+        });
+        // console.log(rows);
+        appendLog("getCheckedRowData(): \r\n" + JSON.stringify(rows), "success");
+    }
+
+    /**
+     * 勾選欄位[Name]中含有"J"文字的所有Row
+     * 使用Regex(Regular Expression) 找到有"J"的checkbox, 英文不分大小寫
+     */
+    function setCheckedJ() {
+        //Regex 正規表達式
+        let pattern = /J/ig;
+        let _checedboxList = $("#mesTable").find("input[type=checkbox]");
+        $.each(_checedboxList, function(i, _checkbox) {
+            let value = $(_checkbox).val();
+            //檢查是否符合條件
+            if (pattern.test(value)) {
+                //將checkbox選取
+                $(_checkbox).prop("checked", true);
+            }
+        });
+        appendLog("setCheckedJ()");
+    }
+
+    /**
+     * 清除歷程
+     */
+    function clearLog() {
+        $("#execuationLog").empty();
+    }
+
+    /**
+     * 顯示執行歷程
+     * @param {string} message - 文字訊息
+     */
+    function appendLog(message, color) {
+        // console.log(message, color);
+        let time = moment().format("HH:mm:ss");
+        // pre-line : https://www.cnblogs.com/qianlegeqian/p/3987235.html
+        let _label = $("<label>").text(`[${time}]: ${message}`).addClass("pre-line");
+            
+        if (typeof(color) != "undefined") {
+            _label.addClass(`text-${color}`);
+        }
+        $("#execuationLog").prepend(_label);
+    }
+</script>
