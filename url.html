@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><a href="https://pjchender.blogspot.com/2018/08/js-javascript-url-parameters.html">使用 JavaScript 解析網址與處理網址中的參數（URL Parameters）</a></h1>
+    <h3><a href="https://developer.mozilla.org/en-US/docs/Web/API/URL">URL</a></h3>
+    <h3><a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams">URLSearchParams()</a></h3>
+</body>
+<script>
+    // 1
+    let example = new URL("https://example.com:888/BEN/QueryString?buCode=BU3&name=Jonathan&age=18");
+    console.log("URL:", example);
+
+    // let exhref = example.href;
+    // console.log("exhref:", exhref);
+    // let exsearch = example.search;
+    // console.log("search:", exsearch);
+
+
+    // 2
+    // let exsearchPar = example.searchParams;
+    // console.log("searchParams:", exsearchPar);
+    // console.log("searchParams.toString():", exsearchPar.toString());
+
+
+    // 3
+    let params = new URLSearchParams(example.search);
+    console.log("URLSearchParams:", params);
+    console.log("URLSearchParams.toString():", params.toString());
+
+    //URLSearchParams.get()
+    let buCode = params.get("buCode");
+    console.log("buCode:", buCode);
+
+    //URLSearchParams.append()
+    params.append("age", 25);
+    console.log("append:", params.toString());
+    
+    //URLSearchParams.delete()
+    // params.delete('age');
+    // console.log("delete:", params.toString());
+
+    //URLSearchParams.getAll()
+    console.log("getAll:", params.getAll("age"));
+
+    //URLSearchParams.set()
+    params.set("abc", "hello");
+    params.set("age", 88)
+    console.log("set:", params.toString());
+
+    //URLSearchParams.entries()
+    for(const [key, value] of params.entries()){
+        console.log(`${key}, ${value}`);
+    }
+
+</script>
+</html>

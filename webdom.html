@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <!-- https://zh.javascript.info/onload-ondomcontentloaded -->
+</head>
+<body>
+  <h1><a href="https://zh.javascript.info/onload-ondomcontentloaded">頁面生命週期</a></h1>
+  <h3><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Document/readyState">Document.readyState</a></h3>
+  <h3><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/readystatechange_event">Document: readystatechange</a></h3>
+  <h3><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Window/DOMContentLoaded_event">DOMContentLoaded</a></h3>
+
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos a natus, distinctio reiciendis quam assumenda laudantium eveniet provident? Modi debitis, soluta sunt quasi alias delectus nihil atque ut. Commodi, excepturi!
+  <br>
+  <iframe src="iframe.html" onload="alert('iframe onload')" ></iframe>
+  
+  <img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache=0">
+
+  <input type="button" value="前往Google網頁" onclick="location.href='http://google.com.tw'">
+</body>
+
+<script>
+    // Document.readyState : https://developer.mozilla.org/zh-TW/docs/Web/API/Document/readyState
+
+    alert('Initial readyState: ' + document.readyState);
+
+    // Document: readystatechange : https://developer.mozilla.org/zh-CN/docs/Web/API/Document/readystatechange_event
+    document.addEventListener('readystatechange', function(){
+      console.log('readyState: ' + document.readyState);
+      alert('readyState: ' + document.readyState);
+    });
+
+    // https://developer.mozilla.org/zh-TW/docs/Web/API/Window/DOMContentLoaded_event
+    // 當document被完整的讀取跟解析後就會被觸發,不會等待 stylesheets, 圖片和 subframes 完成讀取
+    document.addEventListener('DOMContentLoaded', function(){
+      console.log("DOMContentLoaded");
+      alert('DOMContentLoaded');
+    });
+
+    img.onload = function(){
+      console.log("img onload");
+      alert('img onload');
+    }
+
+    window.onload = function(){
+      console.log("window onload");
+      alert('window onload');
+    }
+
+    window.onbeforeunload = function() {
+      console.log("onbeforeunload");
+      return false;
+    };
+
+    // https://zh.javascript.info/onload-ondomcontentloaded#windowonunload
+    window.addEventListener('unload', function(){
+      console.log("unload");
+      navigator.sendBeacon(url, data);
+    })
+    
+  </script>
+
+</html>
