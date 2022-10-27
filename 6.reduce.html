@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>reduce() 和其他幾個差異就很大了，他可以與前一個回傳的值再次作運算，參數包含以下：</h2>
+  <ul>
+    <li>accumulator: 前一個參數，如果是第一個陣列的話，值是以另外傳入或初始化的值</li>
+    <li>currentValue: 當前變數</li>
+    <li>currentIndex: 當前索引</li>
+    <li>array: 全部陣列</li>
+  </ul>
+</body>
+</html>
+<script>
+  let data = [
+    {
+        name: "Ben充電站",
+        Charge: "免費",
+        money: 0,
+    },
+    {
+        name: "Tommy充電站",
+        Charge: "免費",
+        money: 0,
+    },
+    {
+        name: "Tiffany充電站",
+        Charge: "投幣式",
+        money: 15,
+    },
+    {
+        name: "Ted充電站",
+        Charge: "免費",
+        money: 1,
+    },
+    {
+        name: "Sharon充電站",
+        Charge: "投幣式",
+        money: 50,
+    },
+  ];
+
+  var reduceEmpty = data.reduce(function(accumulator, currentValue, currentIndex, array){
+  });
+  console.log("reduceEmpty:", reduceEmpty);
+
+  var reducePlus = data.reduce(function(accumulator, currentValue, currentIndex, array){
+    // 分別為前一個回傳值, 目前值, 當前索引值
+    console.log(accumulator, currentValue);
+    // return accumulator + currentValue.age;  // 與前一個值相加
+  }, 0);                                    // 傳入初始化值為 0
+  // console.log(reducePlus); 
+
+
+</script>

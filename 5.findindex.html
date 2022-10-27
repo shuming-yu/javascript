@@ -12,13 +12,21 @@
 <script>
     // find 值提取出來
     // findIndex 索引 編號 
-
+    
     const color = ['red', 'blue', 'black'];
+    // 1.
+    // 沒有條件 return，會回傳 -1
+    const findIndexEmpty = color.findIndex(function(item){
+    });
+    console.log("findIndexEmpty:", findIndexEmpty);
+
+    // 2.
     const blueIndex = color.findIndex(function(item){
         return item == 'blue';
     })
     console.log("blueIndex:", blueIndex);
 
+    // 3.
     let data = [
         {
             name: "Ben",
@@ -34,7 +42,7 @@
         },
     ];
     const findIndexId = data.findIndex(function(item){
-        console.log(item);
+        console.log("item:", item);
         return item.orderId == "789456";
     })
     console.log("findIndexId:", findIndexId);

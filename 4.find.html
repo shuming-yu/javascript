@@ -7,13 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h2>Array.prototype.find()</h2>
+    <h2>find() 與 filter() 很像，但 find() 只會回傳一次值，且是第一次為 true 的值。</h2>
 </body>
 <script>
     // JS array find 篩選
     // 尋找當下吻合的第一筆資料
 
     const arr = [1, 5, 10, 20, 30, 40];
+    // 1.
+    // 沒有條件 return，會是 undefined
+    let findEmpty = arr.find(function(item){
+    });
+    console.log("findEmpty:", findEmpty);
+
+
+    // 2.
     const newArr = arr.find(function(item){
         console.log(item);
         return item >= 10;
@@ -35,6 +44,7 @@
             score: 50,
         },
     ];
+    // 3.
     const filterScore = data.find(function(item){
         console.log(item);
         return item.score >= 60;

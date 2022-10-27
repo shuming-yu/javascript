@@ -7,24 +7,33 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h2>Array.prototype.filter()</h2>
+    <h2>filter() 會回傳一個陣列，其條件是 return 後方為 true 的物件，很適合用在搜尋符合條件的資料。</h2>
 </body>
 <script>
     // JS array filter 篩選
     // 1. 篩選出符合條件的內容, 組合後回傳新陣列
     // 2. 不會影響到原陣列
-
+    
     const arr = [1, 5, 10];
+    // 1.
+    // 沒有條件 return，會是一個空陣列
+    let filterEmpty = arr.filter(function(item){
+    });
+    console.log("filterEmpty:", filterEmpty);
+
+    
+    // 2.
     const newArr = arr.filter(function(item){
         return item >= 5;
     })
-    console.log(newArr);
+    console.log("newArr:", newArr);
 
 
     let data = [
         {
             name: "Ben",
-            score: 87,
+            score: 88,
         },
         {
             name: "Tiffany",
@@ -35,9 +44,10 @@
             score: 50,
         },
     ];
+    // 3.
     const filterScore = data.filter(function(item){
         return item.score >= 60;
     })
-    console.log(filterScore);
+    console.log("filterScore:", filterScore);
 </script>
 </html>

@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+    <h2>Array.prototype.forEach()</h2>
+    <h2>forEach 是這幾個陣列函式最單純的一個，不會額外回傳值，只單純執行每個陣列內的物件或值。</h2>
+
     <ul class="list">
         <!-- <li>xxx充電站, 免費</li> -->
     </ul>
@@ -16,41 +19,52 @@
         {
             name: "Ben充電站",
             Charge: "免費",
+            money: 0,
         },
         {
             name: "Tommy充電站",
             Charge: "免費",
+            money: 0,
         },
         {
             name: "Tiffany充電站",
             Charge: "投幣式",
+            money: 15,
         },
         {
             name: "Ted充電站",
             Charge: "免費",
+            money: 1,
         },
         {
             name: "Sharon充電站",
             Charge: "投幣式",
+            money: 50,
         },
     ];
 
-    let str = "";
-    let list = document.querySelector(".list");
-    // console.log(list);
+    // let str = "";
+    // let list = document.querySelector(".list");
+    // data.forEach(function(item, index, array){
+    //     console.log(index, item, array);    // 物件, 索引, 全部陣列
+    //     str += `<li>${item.name},${item.Charge}</li>`;
+    // })
+    // list.innerHTML = str;
 
-    data.forEach(function(item, index){
-        console.log(index, item);
-        str += `<li>${item.name},${item.Charge}</li>`;
-    })
-
-    list.innerHTML = str;
-
-    
+    // 1.
     // forEach 沒有回傳的特性 - return
     let a = data.forEach(function(item){
         return item;
     })
-    console.log(a);
+    console.log("a:", a);  // undefined
+
+
+    // 2.
+    data.forEach(function(item){
+        item.money = item.money + 1;
+    })
+    console.log("data:", data);
+
+    
 </script>
 </html>
