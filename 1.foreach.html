@@ -54,18 +54,28 @@
     // 1.
     // forEach 沒有回傳的特性 - return
     let a = data.forEach(function(item){
-        return item;
+
     })
     console.log("a:", a);  // undefined
 
 
     // 2.
-    let b = data.forEach(function(item, index, array){
-        // console.log(item, index, array);
-        item.money = item.money + 1;
+    // let b = data.forEach(function(item, index, array){
+    //     // console.log(item, index, array);
+    //     item.money = item.money + 1;
+    // })
+    // console.log("b:", b);   // undefined
+
+
+    let c = data.map(function(item, i) {
+        // item.money = item.money + 1;
+        return {
+            ...item,
+            money: item.money + 1,
+        };
     })
     console.log("data:", data);
-    // console.log("b:", b);   // undefined
+    console.log("c:", c);
 
     
 </script>
