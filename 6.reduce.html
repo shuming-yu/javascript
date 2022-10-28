@@ -7,6 +7,7 @@
   <title>Document</title>
 </head>
 <body>
+  <h2><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce">Array.prototype.reduce()</a></h2>
   <h2>reduce() 和其他幾個差異就很大了，他可以與前一個回傳的值再次作運算，參數包含以下：</h2>
   <ul>
     <li>accumulator: 前一個參數，如果是第一個陣列的話，值是以另外傳入或初始化的值</li>
@@ -21,40 +22,44 @@
     {
         name: "Ben充電站",
         Charge: "免費",
-        money: 0,
+        money: 1,
     },
     {
         name: "Tommy充電站",
         Charge: "免費",
-        money: 0,
+        money: 2,
     },
     {
         name: "Tiffany充電站",
         Charge: "投幣式",
-        money: 15,
+        money: 3,
     },
     {
         name: "Ted充電站",
         Charge: "免費",
-        money: 1,
+        money: 4,
     },
     {
         name: "Sharon充電站",
         Charge: "投幣式",
-        money: 50,
+        money: 5,
     },
   ];
-
+  // 1.
+  // 沒有條件 return，會是 undefined
   var reduceEmpty = data.reduce(function(accumulator, currentValue, currentIndex, array){
   });
   console.log("reduceEmpty:", reduceEmpty);
 
+
+  // 2.
+  // let arr = [1,2,3];
   var reducePlus = data.reduce(function(accumulator, currentValue, currentIndex, array){
     // 分別為前一個回傳值, 目前值, 當前索引值
-    console.log(accumulator, currentValue);
-    // return accumulator + currentValue.age;  // 與前一個值相加
-  }, 0);                                    // 傳入初始化值為 0
-  // console.log(reducePlus); 
+    console.log(currentValue);
+    return accumulator + currentValue.money;  // 與前一個值相加
+  }, 0);                                      // 傳入初始化值為 0
+  console.log("reducePlus:", reducePlus);
 
 
 </script>

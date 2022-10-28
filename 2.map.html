@@ -1,91 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-    <h2>Array.prototype.map()</h2>
-    <h2>使用 map() 時他需要回傳一個值，他會透過函式內所回傳的值組合成一個陣列。</h2>
-    <ul>
-        <li>如果不回傳則是 undefined</li>
-        <li>回傳數量等於原始陣列的長度</li>
-        <li>能將原始陣列運算後, 重新組合回傳一個新陣列</li>
-        <li>不會影響到原陣列</li>
-        <li>這很適合將原始的變數運算後重新組合一個新的陣列</li>
-    </ul>
+  <h2>Array.prototype.map()</h2>
+  <h2>使用 map() 時他需要回傳一個值，他會透過函式內所回傳的值組合成一個陣列。</h2>
+  <ul>
+      <li>如果不回傳則是 undefined</li>
+      <li>回傳數量等於原始陣列的長度</li>
+      <li>能將原始陣列運算後, 重新組合回傳一個新陣列</li>
+      <li>不會影響到原陣列</li>
+      <li>這很適合將原始的變數運算後重新組合一個新的陣列</li>
+  </ul>
 </body>
 <script>
-    const test = [1, 2, 3];
-    // 1.
-    // 若未 return, 也會試圖回傳東西回去 undefined
-    const newTest = test.map(function(item){
-        // return item;
-    })
-    console.log("newTest:", newTest);
+  const test = [1, 2, 3];
+  // 1.
+  // 若未 return, 也會試圖回傳東西回去 undefined
+  const newTest = test.map(function(item){
+      // return item;
+  })
+  console.log("newTest:", newTest);
 
-    // 2.
-    const arr = [1, 5, 10];
-    const newArr = arr.map(function(item, i){
-        // console.log(item, i);
-        return item*item;
-    })
-    console.log("arr:", arr);
-    console.log("newArr:", newArr);
-    
+  // 2.
+  const arr = [1, 5, 10];
+  const newArr = arr.map(function(item, i){
+    // console.log(item, i);
+    return item*item;
+  })
+  console.log("arr:", arr);
+  console.log("newArr:", newArr);
+  
 
-    
-    let total = 0;
-    arr.forEach(function(item){
-        total += item;
-    })
-    console.log("total:", total);
+  
+  let total = 0;
+  arr.forEach(function(item){
+    total += item;
+  })
+  console.log("total:", total);
 
 
 
-    let data = [
-        {
-            name: "Ben充電站",
-            Charge: "免費",
-            money: 1,
-        },
-        {
-            name: "Tommy充電站",
-            Charge: "免費",
-            money: 8,
-        },
-        {
-            name: "Tiffany充電站",
-            Charge: "投幣式",
-            money: 13,
-        },
-        {
-            name: "Ted充電站",
-            Charge: "免費",
-            money: 20,
-        },
-        {
-            name: "Sharon充電站",
-            Charge: "投幣式",
-            money: 9,
-        },
-    ];
-    // 3.
-    const newData = data.map(function(item, index){
-        // console.log(item);
-        return item > 10;
+  let data = [
+    {
+        name: "Ben充電站",
+        Charge: "免費",
+        money: 1,
+    },
+    {
+        name: "Tommy充電站",
+        Charge: "免費",
+        money: 8,
+    },
+    {
+        name: "Tiffany充電站",
+        Charge: "投幣式",
+        money: 13,
+    },
+    {
+        name: "Ted充電站",
+        Charge: "免費",
+        money: 20,
+    },
+    {
+        name: "Sharon充電站",
+        Charge: "投幣式",
+        money: 9,
+    },
+  ];
+  // 3.
+  const newData = data.map(function(item, index){
+    // console.log(item);
+    return item > 10;
 
-        // if(item.money > 10){
-        //     return item;
-        // }else{
-        //     return false;
-        // }
-    })
-    console.log("data:", data);
-    console.log("newData:", newData);
-    
-    
+    // if(item.money > 10){
+    //     return item;
+    // }else{
+    //     return false;
+    // }
+  })
+  console.log("data:", data);
+  console.log("newData:", newData);
+  
+
+
+
+
+
+
+  // var person = {
+  //   name : ['Bob', 'Smith'],
+  //   age : 32,
+  //   gender : 'male',
+  //   interests : ['music', 'skiing'],
+  //   bio : function() {
+  //       alert(this.name[0] + ' ' + this.name[1] + ' is ' + this.age + ' years old. He likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
+  //   },
+  //   greeting: function() {
+  //       alert('Hi! I\'m ' + this.name[0] + '.');
+  //   }
+  // };
+  
 </script>
 </html>

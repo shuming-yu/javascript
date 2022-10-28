@@ -29,34 +29,31 @@
 
 
     // 3
-    let params = new URLSearchParams(example.search);
+    let params = example.searchParams;//new URLSearchParams(example.search);
     console.log("URLSearchParams:", params);
-    console.log("URLSearchParams.toString():", params.toString());
+    // params.toString()
+    // console.log("URLSearchParams.toString():", params.toString());
 
-    //URLSearchParams.get()
-    let buCode = params.get("buCode");
-    console.log("buCode:", buCode);
+    // //URLSearchParams.get()
+    // let buCode = params.get("buCode");
+    // console.log("buCode:", buCode);
 
-    //URLSearchParams.append()
-    params.append("age", 25);
-    console.log("append:", params.toString());
+    // //URLSearchParams.append()
+    // params.append("age", 25);
+    // console.log("append:", params.toString());
     
-    //URLSearchParams.delete()
-    // params.delete('age');
-    // console.log("delete:", params.toString());
+    // //URLSearchParams.delete()
+    // // params.delete('age');
+    // // console.log("delete:", params.toString());
 
-    //URLSearchParams.getAll()
-    console.log("getAll:", params.getAll("age"));
+    // //URLSearchParams.getAll()
+    // console.log("getAll:", params.getAll("age"));
 
-    //URLSearchParams.set()
-    params.set("abc", "hello");
-    params.set("age", 88)
-    console.log("set:", params.toString());
+    // //URLSearchParams.set()
+    // // params.set("abc", "hello");
+    // // params.set("age", 88)
+    // console.log("set:", params.toString());
 
-    //URLSearchParams.entries()
-    for(const [key, value] of params.entries()){
-        console.log(`${key}, ${value}`);
-    }
 
 </script>
 </html>

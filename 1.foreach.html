@@ -60,10 +60,12 @@
 
 
     // 2.
-    data.forEach(function(item){
+    let b = data.forEach(function(item, index, array){
+        // console.log(item, index, array);
         item.money = item.money + 1;
     })
     console.log("data:", data);
+    // console.log("b:", b);   // undefined
 
     
 </script>
