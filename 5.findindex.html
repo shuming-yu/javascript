@@ -1,51 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-    <h2>Array.prototype.findIndex()</h2>
+  <h2><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">Array.prototype.findIndex()</a></h2>
+  <h2>findIndex() 方法將依據提供的測試函式，尋找陣列中符合的元素，並返回其 index（索引）。如果沒有符合的對象，將返回 -1 。</h2>
 </body>
-<script>
-    // find 值提取出來
-    // findIndex 索引 編號 
-    
-    const color = ['red', 'blue', 'black'];
-    // 1.
-    // 沒有條件 return，會回傳 -1
-    const findIndexEmpty = color.findIndex(function(item){
-    });
-    console.log("findIndexEmpty:", findIndexEmpty);
-
-    // 2.
-    const blueIndex = color.findIndex(function(item){
-        return item == 'blue';
-    })
-    console.log("blueIndex:", blueIndex);
-
-    // 3.
-    let data = [
-        {
-            name: "Ben",
-            orderId: "123456",
-        },
-        {
-            name: "Tiffany",
-            orderId: "321654",
-        },
-        {
-            name: "Sharon",
-            orderId: "789456",
-        },
-    ];
-    const findIndexId = data.findIndex(function(item){
-        console.log("item:", item);
-        return item.orderId == "789456";
-    })
-    console.log("findIndexId:", findIndexId);
-    console.log(`訂單編號是 ${data[findIndexId].name} 的`);
-</script>
 </html>
+
+<script>
+// find 值提取出來
+// findIndex 索引 編號 
+
+const color = ['red', 'blue', 'black'];
+// 1.
+const blueIndex = color.findIndex(function(item){
+  return item == 'blue';
+  // return item == 'hihi';  // 未符合條件的話會回傳 -1
+})
+// console.log("blueIndex:", blueIndex);
+
+
+let data = [
+  {
+    name: "Ben",
+    orderId: "123456",
+  },
+  {
+    name: "Tiffany",
+    orderId: "321654",
+  },
+  {
+    name: "Sharon",
+    orderId: "789456",
+  },
+];
+// 2.
+const findIndexId = data.findIndex(function(item){
+  // console.log("item:", item);
+  return item.orderId == "789456";
+})
+console.log("findIndexId:", findIndexId);
+console.log(`訂單編號是 ${data[findIndexId].name} 的`);
+</script>

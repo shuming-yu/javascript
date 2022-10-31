@@ -7,47 +7,49 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Array.prototype.filter()</h2>
-    <h2>filter() 會回傳一個陣列，其條件是 return 後方為 true 的物件，很適合用在搜尋符合條件的資料。</h2>
+  <h2><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">Array.prototype.filter()</a></h2>
+  <!-- <h2>filter() 會回傳一個陣列，其條件是 return 後方為 true 的物件，很適合用在搜尋符合條件的資料。</h2> -->
+
+  <ul>
+    <li>原型： Array.prototype.filter()</li>
+    <li>功能： 經指定的函式運算後，由原陣列中通過該函式檢驗的元素回傳一個新陣列。</li>
+    <li>改變： 不會改變原陣列。</li>
+    <li>語法： var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])。</li>
+    <li>回傳值： 回傳新陣列，原陣列不改變。</li>
+    <li>參數： callback 函式與 thisArg ( 第二參數可忽略 )</li>
+  </ul>
 </body>
-<script>
-    // JS array filter 篩選
-    // 1. 篩選出符合條件的內容, 組合後回傳新陣列
-    // 2. 不會影響到原陣列
-    
-    const arr = [1, 5, 10];
-    // 1.
-    // 沒有條件 return，會是一個空陣列
-    let filterEmpty = arr.filter(function(item){
-    });
-    console.log("filterEmpty:", filterEmpty);
-
-    
-    // 2.
-    const newArr = arr.filter(function(item){
-        return item >= 5;
-    })
-    console.log("newArr:", newArr);
-
-
-    let data = [
-        {
-            name: "Ben",
-            score: 88,
-        },
-        {
-            name: "Tiffany",
-            score: 62,
-        },
-        {
-            name: "Sharon",
-            score: 50,
-        },
-    ];
-    // 3.
-    const filterScore = data.filter(function(item){
-        return item.score >= 60;
-    })
-    console.log("filterScore:", filterScore);
-</script>
 </html>
+
+<script>
+const arr = [3, 6, 9];
+// 1. 
+const newArr = arr.filter(function(item){
+  // item = item + 100;  // 無法對元素進行操作
+  return item >= 5;
+  // return item <= 2; // 未符合條件的話會回傳 [] 空陣列
+})
+// console.log("arr:", arr); // 原始資料無改變
+console.log("newArr:", newArr);
+
+
+let data = [
+  {
+      name: "Ben",
+      score: 88,
+  },
+  {
+      name: "Tiffany",
+      score: 62,
+  },
+  {
+      name: "Sharon",
+      score: 50,
+  },
+];
+// 2. 回傳篩選為 true 的物件
+const filterScore = data.filter(function(item){
+    return item.score >= 60;
+})
+// console.log("filterScore:", filterScore);
+</script>

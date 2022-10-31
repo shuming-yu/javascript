@@ -1,82 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-    <h2>Array.prototype.forEach()</h2>
-    <h2>forEach 是這幾個陣列函式最單純的一個，不會額外回傳值，只單純執行每個陣列內的物件或值。</h2>
-
-    <ul class="list">
-        <!-- <li>xxx充電站, 免費</li> -->
-    </ul>
+  <h2><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Array.prototype.forEach()</a></h2>
+  <!-- <h2>forEach 是這幾個陣列函式最單純的一個，不會額外回傳值，只單純執行每個陣列內的物件或值。</h2> -->
+  <ul>
+    <li>原型： Array.prototype.foreach()</li>
+    <li>功能： 對陣列的每個元素執行一次提供的函數。</li>
+    <li>改變： 不會直接改變原陣列，但可能會依帶入的函式而改變。</li>
+    <li>語法： arr.forEach(callback[, thisArg])。</li>
+    <li>回傳值： undefined。</li>
+    <li>參數： callback 函式與 thisArg ( 第二參數可忽略 )</li>
+  </ul>
 </body>
-<script>
-    let data = [
-        {
-            name: "Ben充電站",
-            Charge: "免費",
-            money: 0,
-        },
-        {
-            name: "Tommy充電站",
-            Charge: "免費",
-            money: 0,
-        },
-        {
-            name: "Tiffany充電站",
-            Charge: "投幣式",
-            money: 15,
-        },
-        {
-            name: "Ted充電站",
-            Charge: "免費",
-            money: 1,
-        },
-        {
-            name: "Sharon充電站",
-            Charge: "投幣式",
-            money: 50,
-        },
-    ];
-
-    // let str = "";
-    // let list = document.querySelector(".list");
-    // data.forEach(function(item, index, array){
-    //     console.log(index, item, array);    // 物件, 索引, 全部陣列
-    //     str += `<li>${item.name},${item.Charge}</li>`;
-    // })
-    // list.innerHTML = str;
-
-    // 1.
-    // forEach 沒有回傳的特性 - return
-    let a = data.forEach(function(item){
-
-    })
-    console.log("a:", a);  // undefined
-
-
-    // 2.
-    // let b = data.forEach(function(item, index, array){
-    //     // console.log(item, index, array);
-    //     item.money = item.money + 1;
-    // })
-    // console.log("b:", b);   // undefined
-
-
-    let c = data.map(function(item, i) {
-        // item.money = item.money + 1;
-        return {
-            ...item,
-            money: item.money + 1,
-        };
-    })
-    console.log("data:", data);
-    console.log("c:", c);
-
-    
-</script>
 </html>
+
+<script>
+let data = [
+    {
+        name: "Ben充電站",
+        Charge: "免費",
+        money: 0,
+    },
+    {
+        name: "Tommy充電站",
+        Charge: "免費",
+        money: 0,
+    },
+    {
+        name: "Tiffany充電站",
+        Charge: "投幣式",
+        money: 15,
+    },
+    {
+        name: "Ted充電站",
+        Charge: "免費",
+        money: 1,
+    },
+    {
+        name: "Sharon充電站",
+        Charge: "投幣式",
+        money: 50,
+    },
+];
+let arr = [1, 2, 3];
+
+// 1.
+// forEach 沒有回傳的特性 - return
+// forEach()的第二個參數 thisArg 是可選擇性的，如果有這個參數，它就會被作為 callback 回呼函式每次被調用的 this 的值。
+let a = data.forEach(function(item){
+    // console.log(this);
+}, arr) // this -> obj
+
+// 注意的是 callback 函式，如果是箭頭函式，則在創建該函數時已按詞法綁定，因此 thisArg 不會起作用。
+// let a = data.forEach((item)=>{
+//     console.log(this);
+// }, arr)
+
+// console.log("a:", a);  // undefined
+
+
+// 2. 
+data.forEach(function(currentValue, index, array){
+    // console.log(currentValue, index, array);
+    currentValue.money = currentValue.money + 1;
+})
+// console.log("data:", data);
+
+</script>

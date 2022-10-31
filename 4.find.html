@@ -1,54 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-    <h2>Array.prototype.find()</h2>
-    <h2>find() 與 filter() 很像，但 find() 只會回傳一次值，且是第一次為 true 的值。</h2>
+  <h2><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/find">Array.prototype.find()</a></h2>
+  <h2>find() 與 filter() 很像，但 find() 只會回傳一次值，且是第一次為 true 的值。</h2>
+  <h2>find() 方法會回傳第一個滿足所提供之測試函式的元素值。否則回傳 undefined。</h2>
 </body>
-<script>
-    // JS array find 篩選
-    // 尋找當下吻合的第一筆資料
-
-    const arr = [1, 5, 10, 20, 30, 40];
-    // 1.
-    // 沒有條件 return，會是 undefined
-    let findEmpty = arr.find(function(item){
-    });
-    console.log("findEmpty:", findEmpty);
-
-
-    // 2.
-    const newArr = arr.find(function(item){
-        console.log(item);
-        return item >= 10;
-    })
-    console.log("newArr:",newArr);
-
-
-    let data = [
-        {
-            name: "Ben",
-            score: 87,
-        },
-        {
-            name: "Tiffany",
-            score: 62,
-        },
-        {
-            name: "Sharon",
-            score: 50,
-        },
-    ];
-    // 3.
-    const filterScore = data.find(function(item){
-        console.log(item);
-        return item.score >= 60;
-    })
-    console.log("filterScore:", filterScore);
-</script>
 </html>
+
+<script>
+const arr = [1, 5, 10, 20, 30, 40];
+// 1.
+const newArr = arr.find(function(item){
+  // console.log(item);
+  return item >= 15;
+  // return item >= 50;  // 未符合條件的話會回傳 undefined
+})
+// console.log("newArr:",newArr);
+
+
+let data = [
+  {
+    name: "Tom",
+    score: 59,
+  },
+  {
+    name: "Ben",
+    score: 88,
+  },
+  {
+    name: "Tiffany",
+    score: 62,
+  },
+  {
+    name: "Sharon",
+    score: 50,
+  },
+];
+// 2.
+const filterScore = data.find(function(item){
+  // console.log(item);
+  return item.score >= 60;
+})
+// console.log("filterScore:", filterScore);
+</script>

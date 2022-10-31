@@ -7,103 +7,118 @@
   <title>Document</title>
 </head>
 <body>
-  <h2>Array.prototype.map()</h2>
-  <h2>使用 map() 時他需要回傳一個值，他會透過函式內所回傳的值組合成一個陣列。</h2>
+  <h2><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Array.prototype.map()</a></h2>
+  <!-- <h2>使用 map() 時他需要回傳一個值，他會透過函式內所回傳的值組合成一個陣列。</h2> -->
+
   <ul>
-      <li>如果不回傳則是 undefined</li>
-      <li>回傳數量等於原始陣列的長度</li>
-      <li>能將原始陣列運算後, 重新組合回傳一個新陣列</li>
-      <li>不會影響到原陣列</li>
-      <li>這很適合將原始的變數運算後重新組合一個新的陣列</li>
+    <li>原型： Array.prototype.map()</li>
+    <li>功能： 建立一個新的陣列，其內容為原陣列的每一個元素經由回呼函式運算後所回傳的結果之集合。</li>
+    <li>改變： 不會改變原陣列。</li>
+    <li>語法： var new_array = arr.map(function callback(currentValue[, index[, array]]) { // Return element for new_array }[, thisArg])。</li>
+    <li>回傳值： 回傳新陣列，原陣列不改變。對陣列中的各元素進行操作，操作後的值會被寫入新的陣列中並返回。</li>
+    <li>參數： callback 函式與 thisArg ( 第二參數可忽略 )</li>
   </ul>
 </body>
+
+</html>
+
 <script>
-  const test = [1, 2, 3];
-  // 1.
-  // 若未 return, 也會試圖回傳東西回去 undefined
-  const newTest = test.map(function(item){
-      // return item;
-  })
-  console.log("newTest:", newTest);
-
-  // 2.
-  const arr = [1, 5, 10];
-  const newArr = arr.map(function(item, i){
-    // console.log(item, i);
-    return item*item;
-  })
-  console.log("arr:", arr);
-  console.log("newArr:", newArr);
-  
-
-  
-  let total = 0;
-  arr.forEach(function(item){
-    total += item;
-  })
-  console.log("total:", total);
+const arr = [1, 5, 10];
+// 1. 若未 return, 也會試圖回傳東西回去 undefined, 回傳數量等於原始陣列的長度
+const arrEmpty = arr.map(function(item){
+  // return item;
+})
+// console.log("arrEmpty:", arrEmpty);
 
 
+// 2. 
+const newArr = arr.map(function(currentValue, index, array){
+  // console.log(currentValue, index, array);
+  return currentValue * currentValue;
+})
+// console.log("arr:", arr);
+// console.log("newArr:", newArr);
 
-  let data = [
-    {
-        name: "Ben充電站",
-        Charge: "免費",
-        money: 1,
-    },
-    {
-        name: "Tommy充電站",
-        Charge: "免費",
-        money: 8,
-    },
-    {
-        name: "Tiffany充電站",
-        Charge: "投幣式",
-        money: 13,
-    },
-    {
-        name: "Ted充電站",
-        Charge: "免費",
-        money: 20,
-    },
-    {
-        name: "Sharon充電站",
-        Charge: "投幣式",
-        money: 9,
+
+let data = [
+  {
+      name: "Ben充電站",
+      Charge: "免費",
+      money: 1,
+  },
+  {
+      name: "Tommy充電站",
+      Charge: "免費",
+      money: 8,
+  },
+  {
+      name: "Tiffany充電站",
+      Charge: "投幣式",
+      money: 13,
+  },
+  {
+      name: "Ted充電站",
+      Charge: "免費",
+      money: 20,
+  },
+  {
+      name: "Sharon充電站",
+      Charge: "投幣式",
+      money: 9,
     },
   ];
-  // 3. return true || false
-  const newData = data.map(function(item, index){
-    // console.log(item);
-    return item > 10;
 
-    // if(item.money > 10){
-    //     return item;
-    // }else{
-    //     return false;
-    // }
+// 3. 進階
+  let newData = data.map(function(item) {
+    // item.money = item.money + 50;  // 對元素進行操作, 會改變原始資料 data
+    return {
+        ...item,
+        money: item.money + 1,
+    };
   })
-  console.log("data:", data);
-  console.log("newData:", newData);
+  // console.log("data:", data);
+  // console.log("newData:", newData);
+
+
+  // const items = ["book", "cap", "bag"];
+  // const prices = [125, 76, 390];
+  // const listItems = items.map((item, index) => ({ itemName: item, price: prices[index]}));
+  // console.log("listItems:", listItems);
+
+
   
+// 4. return true || false
+const newBoolean = data.map(function(item, index){
+  return item.money > 10;
+
+  // if(item.money > 10){
+  //     return item;
+  // }else{
+  //     return false;
+  // }
+})
+// console.log("data:", data);
+// console.log("newBoolean:", newBoolean);
 
 
 
 
 
 
-  // var person = {
-  //   name : ['Bob', 'Smith'],
-  //   age : 32,
-  //   gender : 'male',
-  //   interests : ['music', 'skiing'],
-  //   bio : function() {
-  //       alert(this.name[0] + ' ' + this.name[1] + ' is ' + this.age + ' years old. He likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
-  //   },
-  //   greeting: function() {
-  //       alert('Hi! I\'m ' + this.name[0] + '.');
-  //   }
-  // };
-  
+
+
+
+// var person = {
+//   name : ['Bob', 'Smith'],
+//   age : 32,
+//   gender : 'male',
+//   interests : ['music', 'skiing'],
+//   bio : function() {
+//       alert(this.name[0] + ' ' + this.name[1] + ' is ' + this.age + ' years old. He likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
+//   },
+//   greeting: function() {
+//       alert('Hi! I\'m ' + this.name[0] + '.');
+//   }
+// };
+
 </script>
-</html>
