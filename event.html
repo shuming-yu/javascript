@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="button" value="點擊1" class="btn1">
+
+  <ul class="list">
+    <li>HiHi</li>
+    <li>Hello!!</li>
+    <li><input type="button" value="點擊2" class="btn2"></li>
+  </ul>
+  
+  <h1>標題</h1>
+  <a href="http://google.com.tw">Google!!</a>
+
+  <h2>F12 使用 DEV Tools -> 指向 btn -> 可檢視 Event Listeners 註冊到事件監聽行為</h2>
+</body>
+</html>
+
+<script>
+  const btn1 = document.querySelector(".btn1");
+  const list = document.querySelector(".list");
+  const title = document.querySelector("h1");
+  const mylink = document.querySelector("a");
+
+  // 1. 監聽 事件
+  btn1.addEventListener("click", function(event){
+
+    // console.log("你點擊到了!!");
+    title.textContent = "按鈕已經被點擊了!!";
+
+    // 2. event 即是 物件
+    // 即時的快照, 將物件資訊存在 event 物件內
+    // console.log(event);
+
+
+    console.log(event.target);
+
+  })
+
+
+  // 3. nodeName 回傳 dom 在 html 標籤
+  console.log(btn1.nodeName);
+
+
+
+  list.addEventListener("click", function(e){
+
+    // 4. .target 偵測點擊到的 dom 物件
+    console.log(e.target);
+
+
+    //  5. e.target 搭配 nodeName 節點
+    if(e.target.nodeName == "INPUT"){
+      console.log("你點到 list 下的 button 囉!!");
+    }
+  })
+
+
+
+  mylink.addEventListener("click", function(e){
+
+    // 6. .preventDefault() 取消預設觸發行為
+    e.preventDefault();
+
+    console.log("點擊到 link 連結!!");
+  })
+
+
+</script>
