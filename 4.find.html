@@ -16,8 +16,8 @@
 <script>
 const arr = [1, 5, 10, 20, 30, 40];
 // 1.
-const newArr = arr.find(function(item){
-  // console.log(item);
+const newArr = arr.find(function(item, index, arr){
+  // console.log(item, index, arr);
   return item >= 15;
   // return item >= 50;  // 未符合條件的話會回傳 undefined
 })
@@ -44,8 +44,8 @@ let data = [
 ];
 // 2.
 const filterScore = data.find(function(item){
-  // console.log(item);
+  console.log(item);
   return item.score >= 60;
 })
-// console.log("filterScore:", filterScore);
+console.log("filterScore:", filterScore);
 </script>

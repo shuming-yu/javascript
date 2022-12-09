@@ -25,9 +25,8 @@
 const arr = [3, 6, 9];
 // 1. 
 const newArr = arr.filter(function(item){
-  // item = item + 100;  // 無法對元素進行操作
-  return item >= 5;
-  // return item <= 2; // 未符合條件的話會回傳 [] 空陣列
+  // return item >= 5;
+  return item <= 2; // 未符合條件的話會回傳 [] 空陣列
 })
 // console.log("arr:", arr); // 原始資料無改變
 console.log("newArr:", newArr);
@@ -51,5 +50,5 @@ let data = [
 const filterScore = data.filter(function(item){
     return item.score >= 60;
 })
-// console.log("filterScore:", filterScore);
+console.log("filterScore:", filterScore);
 </script>

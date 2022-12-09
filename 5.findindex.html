@@ -19,10 +19,11 @@
 const color = ['red', 'blue', 'black'];
 // 1.
 const blueIndex = color.findIndex(function(item){
+  console.log(item);
   return item == 'blue';
   // return item == 'hihi';  // 未符合條件的話會回傳 -1
 })
-// console.log("blueIndex:", blueIndex);
+console.log("blueIndex:", blueIndex);
 
 
 let data = [
@@ -44,6 +45,6 @@ const findIndexId = data.findIndex(function(item){
   // console.log("item:", item);
   return item.orderId == "789456";
 })
-console.log("findIndexId:", findIndexId);
-console.log(`訂單編號是 ${data[findIndexId].name} 的`);
+// console.log("findIndexId:", findIndexId);
+// console.log(`訂單編號是 ${data[findIndexId].name} 的`);
 </script>

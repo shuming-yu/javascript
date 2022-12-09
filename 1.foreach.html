@@ -49,25 +49,27 @@ let data = [
     },
 ];
 let arr = [1, 2, 3];
+let obj = { one: 1, two: 2, three: 3, four: 4, five: 5 };
 
 // 1.
 // forEach 沒有回傳的特性 - return
 // forEach()的第二個參數 thisArg 是可選擇性的，如果有這個參數，它就會被作為 callback 回呼函式每次被調用的 this 的值。
-let a = data.forEach(function(item){
-    // console.log(this);
-}, arr) // this -> obj
+// let a = data.forEach(function(item){
+//     console.log(this);
+//     // return item
+// }, obj)
 
 // 注意的是 callback 函式，如果是箭頭函式，則在創建該函數時已按詞法綁定，因此 thisArg 不會起作用。
-// let a = data.forEach((item)=>{
-//     console.log(this);
-// }, arr)
+data.forEach((item) => {
+    console.log(this);
+}, arr)
 
 // console.log("a:", a);  // undefined
 
 
 // 2. 
 data.forEach(function(currentValue, index, array){
-    // console.log(currentValue, index, array);
+    console.log(currentValue, index, array);
     currentValue.money = currentValue.money + 1;
 })
 // console.log("data:", data);
