@@ -11,7 +11,6 @@
 <body>
   <a href="./01-trusy_falsy.html">01-trusy_falsy</a>
   <a href="./02-default_vaule.html">02-default_vaule</a>
-  <a href="./03-sumup.html">03-sumup</a>
 
 
   <h1>邏輯運算子及函式預設值</h1>
@@ -19,7 +18,12 @@
 
   <ul>
     <li>邏輯 AND (&&) - 只有在兩個運算元都是 True 時才會回傳 True，否則回傳 false ( 若判斷第一個值為 true, 則會直接回傳第二個值 )</li>
-    <li>邏輯 OR (||) - 在兩個運算元有任一個是 True 時就會回傳 True，否則回傳 false ( 若判斷第一個值為 true 時會直接回傳, 否則會回傳第二個值 )</li>  </ul>
+    <li>邏輯 OR (||) - 在兩個運算元有任一個是 True 時就會回傳 True，否則回傳 false ( 若判斷第一個值為 true 時會直接回傳, 否則會回傳第二個值 )</li>
+  </ul>
+
+
+  <h3>運算子優先序(表格Table) : <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#%E8%A1%A8%E6%A0%BC(table)">https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#%E8%A1%A8%E6%A0%BC(table)</a></h3>
+  <!-- 數字越高越先處理 -->
 </body>
 
 </html>
@@ -46,7 +50,7 @@
     var originCash = 500;
     function updateEasyCash(cash){
       console.log("cash:", cash); // 未傳入值情況下為 undefined
-      cash = cash || 50;
+      // cash = cash || 50;
   
       var money = cash + originCash;
       console.log('我有' + money + '元');
@@ -69,8 +73,38 @@
       var money = cash + originCash;
       console.log('我有 ' + money + ' 元');
     }
-    updateEasyCard2();
+    updateEasyCard2(0);
   }
 
 
+  // 3.
+  function sampleAndOr(){
+    var a = 1;
+    var b = 2;
+    var c = 0;
+    console.log("a && b && c:", a && b && c); // 由左至右判斷, 若為 false 直接回傳前者, 否則回傳後者
+    console.log("c || b && c || a:", c || b && c || a); // 先執行 &&, 若為 false 直接回傳後者
+    console.log("a && b || c && a:", a && b || c && a);
+  }
+  
+
+
+  // console.log(1000 < 10000 < 10);
+  // console.log(true < 10); // true 轉型為 1
+  
+
+  // 4.
+  function sampleMix(){
+    var a = '1';
+    var b = 2;
+    // console.log("a * b:", a * b);
+    // console.log("a + b:", a + b);  // 字串與數字相加後回傳 字串
+    var c = (a > b) ? a * b : sum(a, b);
+
+    function sum(a, b) {
+      return a + b;
+    }
+    console.log("c:", c);
+    console.log("typeof c:", typeof c);
+  }
 </script>

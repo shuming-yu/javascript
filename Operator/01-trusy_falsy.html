@@ -11,7 +11,6 @@
 <body>
   <a href="./01-trusy_falsy.html">01-trusy_falsy</a>
   <a href="./02-default_vaule.html">02-default_vaule</a>
-  <a href="./03-sumup.html">03-sumup</a>
 
 
   <h1>Truthy 與 Falsy</h1>
@@ -41,5 +40,18 @@
 
   console.log("new Number(0):", new Number(0)); // 物件的形式, 物件為 Truthy
   console.log("new Boolean(false):", new Boolean(false));
-  // 應避免使用包裹物件的方式來建立原始型別
+  // 使用包裹物件的方式來建立原始型別
+
+
+
+
+
+  function sampleObj() {
+    var a = 1;
+    var b = new Number(1);
+    console.log("b:", b);
+    console.log("typeof b:", typeof b); // object
+    console.log("a == b:", a == b);
+    console.log("a === b:", a === b);
+  }    
 </script>
